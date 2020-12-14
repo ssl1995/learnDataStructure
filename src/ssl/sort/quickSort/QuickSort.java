@@ -19,9 +19,7 @@ public class QuickSort {
     }
 
     private static <E extends Comparable<E>> void quickSort(E[] arr, int l, int r, Random random) {
-        // 结束条件：和归并排序一样
         if (l >= r) return;
-        // 先方法
         int p = partition(arr, l, r, random);
         // 再递归
         quickSort(arr, l, p - 1, random);
@@ -49,4 +47,5 @@ public class QuickSort {
         arr[i] = arr[j];
         arr[j] = t;
     }
+
 }

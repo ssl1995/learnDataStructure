@@ -1,4 +1,4 @@
-package ssl.sort.quickSort;
+package ssl.sort.helpUtils;
 
 import java.util.Random;
 

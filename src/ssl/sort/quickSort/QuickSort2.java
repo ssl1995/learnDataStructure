@@ -1,6 +1,7 @@
 package ssl.sort.quickSort;
 
-
+import ssl.sort.helpUtils.ArrayGenerator;
+import ssl.sort.helpUtils.SortingHelper;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -19,11 +20,10 @@ public class QuickSort2 {
         Random random = new Random();
         quickSort3ways(arr, 0, arr.length - 1, random);
     }
-
+    // 三路归并：实现arr[l+1,lt]<v ; arr[lt+1,i-1]=v ; arr[gt,r]>v
     private static <E extends Comparable<E>> void quickSort3ways(E[] arr, int l, int r, Random random) {
-        // 结束条件：和归并排序一样
+        // 结束条件
         if (l >= r) return;
-        // 优化一：生成[l,r]的随机值，解决有序数组的问题
         int p = l + random.nextInt(r - l + 1);
         swap(arr, l, p);
         // 核心：arr[l+1,lt]<v ; arr[lt+1,i-1]=v ; arr[gt,r]>v
@@ -36,13 +36,15 @@ public class QuickSort2 {
             } else if (arr[i].compareTo(arr[l]) > 0) {
                 gt--;
                 swap(arr, i, gt);
-                // 这里i和gt交换了，所以不用移动i++
+                // 原先的gt--后的值没有比较过，所以保留不用i++
             } else {
+                // arr[i]==arr[l]，i++就行
                 i++;
             }
         }
         swap(arr, l, lt);
         quickSort3ways(arr, l, lt - 1, random);
+        // 三路快排抛弃掉中间的部分，不再递归
         quickSort3ways(arr, gt, r, random);
     }
 

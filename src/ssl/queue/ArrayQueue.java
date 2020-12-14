@@ -1,13 +1,13 @@
 package ssl.queue;
 
 
-import ssl.array.MyArray;
+import ssl.array.Array;
 
 public class ArrayQueue<E> implements Queue<E> {
-    private MyArray<E> array;
+    private Array<E> array;
 
     public ArrayQueue(int capacity) {
-        this.array = new MyArray<E>(capacity);
+        this.array = new Array<E>(capacity);
     }
 
     public ArrayQueue() {

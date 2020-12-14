@@ -1,6 +1,8 @@
 package ssl.sort.quickSort;
 
 
+import ssl.sort.helpUtils.ArrayGenerator;
+import ssl.sort.helpUtils.SortingHelper;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -30,11 +32,12 @@ public class QuickSort1 {
         quickSort2ways(arr, p + 1, r, random);
     }
 
+    // 双路归并，实现arr[i+1...i-1] <= v ; arr[j+1...r] >= v
     private static <E extends Comparable<E>> int partition(E[] arr, int l, int r, Random random) {
         // 优化一：生成[l,r]的随机值，解决有序数组的问题
         int p = l + random.nextInt(r - l + 1);
         swap(arr, l, p);
-        // 核心：arr[i+1...i-1] <= v ; arr[j+1...r] >= v
+        // arr[i+1...i-1] <= v ; arr[j+1...r] >= v
         int i = l + 1, j = r;
         while (true) {
             while (i <= j && arr[i].compareTo(arr[l]) < 0) {
@@ -43,15 +46,18 @@ public class QuickSort1 {
             while (i <= j && arr[j].compareTo(arr[l]) > 0) {
                 j--;
             }
+            // 前面有i++,j--,判断一下i>=j
             if (i >= j) {
                 break;
             }
-            // 循环判断完，交换i和j
+            // 到这里,左边i指向>=，右边j指向<=，
+            // 所以交换两者，使得左边<=v,右边>=v
             swap(arr, i, j);
-            // 再次移动i和j
+            // 再次移动i和j,使得j指向最后一个<=v的值
             i++;
             j--;
         }
+        // 将j和目标值l交换
         swap(arr, l, j);
         return j;
     }

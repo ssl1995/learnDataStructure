@@ -1,14 +1,8 @@
 package ssl.sort.mergerSort;
 
-
 import java.util.Arrays;
 
 
-/**
- * 归并排序：
- * 优化1:
- * 优化2:
- */
 public class MergeSort1 {
     private MergeSort1() {
     }
@@ -29,7 +23,7 @@ public class MergeSort1 {
         int mid = l + (r - l) / 2;
         mergeSort(arr, l, mid, temp);
         mergeSort(arr, mid + 1, r, temp);
-
+        // 优化1:mid>mid+1，才归并
         if (arr[mid].compareTo(arr[mid + 1]) > 0) {
             merge(arr, l, mid, r, temp);
         }
@@ -59,7 +53,6 @@ public class MergeSort1 {
         int i = l, j = mid + 1;
         // 每轮循环为 arr[k] 赋值
         for (int k = l; k <= r; k++) {
-
             if (i > mid) {
                 arr[k] = temp[j];
                 j++;
@@ -75,5 +68,4 @@ public class MergeSort1 {
             }
         }
     }
-
 }

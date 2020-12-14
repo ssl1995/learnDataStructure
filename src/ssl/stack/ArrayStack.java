@@ -1,18 +1,18 @@
 package ssl.stack;
 
 
-import ssl.array.MyArray;
+import ssl.array.Array;
 
 public class ArrayStack<E> implements Stack<E> {
     // 调用自己的数组类
-    MyArray<E> array;
+    Array<E> array;
 
     public ArrayStack(int capacity) {
-        array = new MyArray<>(capacity);
+        array = new Array<>(capacity);
     }
 
     public ArrayStack() {
-        array = new MyArray<>();
+        array = new Array<>();
     }
 
     @Override

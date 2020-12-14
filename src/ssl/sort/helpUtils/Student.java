@@ -1,4 +1,4 @@
-package ssl.sort.selectionSort;
+package ssl.sort.helpUtils;
 
 import java.util.Objects;
 

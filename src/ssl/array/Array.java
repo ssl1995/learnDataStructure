@@ -1,18 +1,26 @@
 package ssl.array;
 
-public class MyArray<E> {
+public class Array<E> {
 
     private E[] data;
     private int size;
 
-    public MyArray(int cap) {
+    public Array(int cap) {
         data = (E[]) new Object[cap];
         size = 0;
     }
 
-    public MyArray() {
+    public Array() {
         // 空参默认数组长度为10
         this(10);
+    }
+
+    public Array(E[] arr) {
+        data = (E[]) new Object[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            data[i] = arr[i];
+        }
+        size = arr.length;
     }
 
     public int getSize() {
@@ -131,6 +139,15 @@ public class MyArray<E> {
             }
         }
         return -1;
+    }
+
+    public void swap(int i, int j) {
+        if (i < 0 || j < 0 || i >= size || j >= size) {
+            throw new IllegalArgumentException("index is illegal");
+        }
+        E temp = data[i];
+        data[i] = data[j];
+        data[j] = temp;
     }
 
 

@@ -1,6 +1,8 @@
-package ssl.sort.selectionSort;
+package ssl.sort.helpUtils;
 
 
+import ssl.sort.bubbleSort.BubbleSort;
+import ssl.sort.heapSort.HeapSort;
 import ssl.sort.insertSort.InsertionSort;
 import ssl.sort.mergerSort.MergeSort;
 import ssl.sort.mergerSort.MergeSort1;
@@ -8,6 +10,8 @@ import ssl.sort.mergerSort.MergeSort2;
 import ssl.sort.quickSort.QuickSort;
 import ssl.sort.quickSort.QuickSort1;
 import ssl.sort.quickSort.QuickSort2;
+import ssl.sort.selectionSort.SelectionSort;
+import ssl.sort.shellSort.ShellSort;
 
 public class SortingHelper {
 
@@ -42,6 +46,16 @@ public class SortingHelper {
             QuickSort1.quickSort2ways(arr);
         else if (sortname.equals("QuickSort3ways"))
             QuickSort2.quickSort3ways(arr);
+        else if (sortname.equals("HeapSort1"))
+            HeapSort.heapSort1(arr);
+        else if (sortname.equals("HeapSort2"))
+            HeapSort.heapSort2(arr);
+        else if (sortname.equals("bubbleSort1"))
+            BubbleSort.bubbleSort1(arr);
+        else if (sortname.equals("bubbleSort2"))
+            BubbleSort.bubbleSort2(arr);
+        else if (sortname.equals("ShellSort1"))
+            ShellSort.shellSort1(arr);
         long endTime = System.nanoTime();
 
         double time = (endTime - startTime) / 1000000000.0;
