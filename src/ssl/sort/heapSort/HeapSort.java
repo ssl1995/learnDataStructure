@@ -6,11 +6,6 @@ import ssl.sort.helpUtils.SortingHelper;
 
 import java.util.Arrays;
 
-/**
- * @Author ssl
- * @Date 2020/12/13 14:22
- * @Description
- */
 public class HeapSort {
     private HeapSort() {
 

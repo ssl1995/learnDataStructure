@@ -1,16 +1,7 @@
 package ssl.heap;
 
-import org.junit.jupiter.api.Test;
 import ssl.array.Array;
 
-import javax.sound.midi.Soundbank;
-import java.util.Random;
-
-/**
- * @Author ssl
- * @Date 2020/12/13 12:20
- * @Description
- */
 public class MaxHeap<E extends Comparable<E>> {
     private Array<E> data;
 
@@ -124,9 +115,5 @@ public class MaxHeap<E extends Comparable<E>> {
         return index * 2 + 2;
     }
 
-
-    public static void main(String[] args) {
-
-    }
 
 }

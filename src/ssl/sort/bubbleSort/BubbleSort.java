@@ -1,27 +1,16 @@
 package ssl.sort.bubbleSort;
 
-import ssl.sort.helpUtils.ArrayGenerator;
-import ssl.sort.helpUtils.SortingHelper;
-
-import java.util.Arrays;
-
-/**
- * @Author ssl
- * @Date 2020/12/13 16:39
- * @Description
- */
 public class BubbleSort {
     private BubbleSort() {
     }
 
-    // i从前往后,优化：使用交换标志位
+    // 冒泡排序1:优化设置交换标志位
     public static <E extends Comparable<E>> void bubbleSort1(E[] arr) {
-        // 只需要n-1层外部循环
+        // 外层只需要length-1次
         for (int i = 0; i < arr.length - 1; i++) {
             // 优化：设置交换标志位
             boolean isSwap = false;
-            // 数组后面的元素已经排好序=arr[n-i,n)已经排好序
-            // 现在需要在arr[n-i-1]位置上放上合适的元素
+            // 内层每趟只比较相邻元素:j和j+1的元素
             for (int j = 0; j < arr.length - 1 - i && arr[j].compareTo(arr[j + 1]) > 0; j++) {
                 swap(arr, j, j + 1);
                 isSwap = true;
@@ -33,14 +22,10 @@ public class BubbleSort {
         }
     }
 
-    // i从前往后，优化:使用交换后的最后位置
+    // 冒泡排序2:优化设置最后交换位置，取消掉i++
     public static <E extends Comparable<E>> void bubbleSort2(E[] arr) {
-        // 只需要n-1层外部循环
         for (int i = 0; i < arr.length - 1; ) {
-            // 优化：设置交换标志位
             int lastSwappedIndex = 0;
-            // 数组后面的元素已经排好序=arr[n-i,n)已经排好序
-            // 现在需要在arr[n-i-1]位置上放上合适的元素
             for (int j = 0; j < arr.length - 1 - i && arr[j].compareTo(arr[j + 1]) > 0; j++) {
                 swap(arr, j, j + 1);
                 lastSwappedIndex = j + 1;
@@ -49,7 +34,7 @@ public class BubbleSort {
         }
     }
 
-    // i从后往前
+    // 冒泡排序3:从后往前比较，这种写法比较好记
     public static <E extends Comparable<E>> void bubbleSort3(E[] arr) {
         // 只需要n-1层外部循环
         for (int i = arr.length - 1; i > 0; i--) {
@@ -58,7 +43,6 @@ public class BubbleSort {
             }
         }
     }
-
 
     private static <E> void swap(E[] arr, int i, int j) {
         E temp = arr[i];
