@@ -1,17 +1,13 @@
 package ssl.sort.heapSort;
 
 import ssl.heap.MaxHeap;
-import ssl.sort.helpUtils.ArrayGenerator;
-import ssl.sort.helpUtils.SortingHelper;
-
-import java.util.Arrays;
 
 public class HeapSort {
     private HeapSort() {
 
     }
 
-    // 未有优化的堆排序:需要生成maxHeap
+    // 堆排序1:使用自己的MaxHeap
     public static <E extends Comparable<E>> void heapSort1(E[] data) {
         // 所有元素放进最大堆中，实现从大到小排序
         MaxHeap<E> maxHeap = new MaxHeap<>();
@@ -24,7 +20,7 @@ public class HeapSort {
         }
     }
 
-    // 优化的堆排序：原地堆排序
+    // 堆排序2：原地堆排序
     public static <E extends Comparable<E>> void heapSort2(E[] data) {
         if (data.length <= 1) {
             return;
@@ -57,23 +53,8 @@ public class HeapSort {
     }
 
     private static <E> void swap(E[] arr, int i, int j) {
-
         E t = arr[i];
         arr[i] = arr[j];
         arr[j] = t;
-    }
-
-    public static void main(String[] args) {
-        int n = 1000000;
-        Integer[] arr1 = ArrayGenerator.generateRandomArray(n, n);
-        Integer[] arr2 = Arrays.copyOf(arr1, arr1.length);
-        Integer[] arr3 = Arrays.copyOf(arr1, arr1.length);
-        Integer[] arr4 = Arrays.copyOf(arr1, arr1.length);
-        Integer[] arr5 = Arrays.copyOf(arr1, arr1.length);
-        SortingHelper.sortTest("MergeSort", arr1);
-        SortingHelper.sortTest("QuickSort2ways", arr2);
-        SortingHelper.sortTest("QuickSort3ways", arr3);
-        SortingHelper.sortTest("HeapSort1", arr4);
-        SortingHelper.sortTest("HeapSort2", arr5);
     }
 }

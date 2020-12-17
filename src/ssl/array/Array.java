@@ -5,14 +5,14 @@ public class Array<E> {
     private E[] data;
     private int size;
 
-    public Array(int cap) {
-        data = (E[]) new Object[cap];
-        size = 0;
-    }
-
     public Array() {
         // 空参默认数组长度为10
         this(10);
+    }
+
+    public Array(int cap) {
+        data = (E[]) new Object[cap];
+        size = 0;
     }
 
     public Array(E[] arr) {
@@ -35,14 +35,6 @@ public class Array<E> {
         return size == 0;
     }
 
-    public void addLast(E e) {
-        add(size, e);
-    }
-
-    public void addFirst(E e) {
-        add(0, e);
-    }
-
     public void add(int index, E e) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("添加失败，插入位置非法");
@@ -51,12 +43,22 @@ public class Array<E> {
         if (size == data.length) {
             resize(2 * data.length);
         }
-        // index位置添加元素
+        // >=index的元素都后移一位
         for (int i = size - 1; i >= index; i--) {
             data[i + 1] = data[i];
         }
+        // 插入元素
         data[index] = e;
+        // 元素长度+1
         size++;
+    }
+
+    public void addLast(E e) {
+        add(size, e);
+    }
+
+    public void addFirst(E e) {
+        add(0, e);
     }
 
     // 扩容函数
@@ -79,7 +81,7 @@ public class Array<E> {
         }
         // 记得更新size
         size--;
-        // 泛型指定最后的元素被GC回收
+        // 最后的不在数组中的元素置空，被GC回收
         data[size] = null;
         // 缩容，采用懒缩容
         if (size == data.length / 4 && data.length / 2 != 0) {
@@ -102,7 +104,6 @@ public class Array<E> {
             remove(index);
         }
     }
-
 
     public E get(int index) {
         if (index < 0 || index > size) {

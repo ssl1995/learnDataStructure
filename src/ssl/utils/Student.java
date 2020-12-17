@@ -19,11 +19,13 @@ public class Student implements Comparable<Student> {
     }
 
     /*
-        重写equals：实现一个基于username的比较
+        使用什么成员实现"相等",重写equals方法：实现一个基于username的比较
             1 当前类==obj，true
             2 obj是否为空||当前类与obj的类不同，false
-            3 强转obj，返回比价属性
+            3 强转obj为当前类
+            4 指定比较属性是username
      */
+    // 相等的比较
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -32,14 +34,13 @@ public class Student implements Comparable<Student> {
         if (obj == null || this.getClass() != obj.getClass()) {
             return false;
         }
+        // 强转
         Student student = (Student) obj;
+        // 指定比较属性
         return Objects.equals(this.username, student.username);
     }
 
-
-    /*
-        重写compareTo：基于成绩的比较
-     */
+    // 排序的比较：实现Comparable接口，重写compareTo方法
     @Override
     public int compareTo(Student student) {
         // this在前就是从大到小排序

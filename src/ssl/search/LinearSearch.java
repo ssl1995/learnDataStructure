@@ -4,13 +4,10 @@ package ssl.search;
 import ssl.utils.Student;
 
 public class LinearSearch {
-    // 构造器私有化
     private LinearSearch() {
     }
 
-    /**
-     * 线性查找1：不使用泛型
-     */
+    // 线性查找法：不使用泛型
     public static int linearSearch1(int[] data, int target) {
         for (int i = 0; i < data.length; i++) {
             if (data[i] == target) {
@@ -20,12 +17,11 @@ public class LinearSearch {
         return -1;
     }
 
-    /**
-     * 线性查找2：使用泛型
-     */
-    public static <E> int linearSearch2(E[] data, E targer) {
+    // 线性查找法：使用泛型，
+    // 一个方法使用泛型，声明在方法返回值之前,用<X>表示
+    public static <E> int linearSearch2(E[] data, E target) {
         for (int i = 0; i < data.length; i++) {
-            if (data[i].equals(targer)) {
+            if (data[i].equals(target)) {
                 return i;
             }
         }
@@ -34,14 +30,12 @@ public class LinearSearch {
 
     // 测试
     public static void main(String[] args) {
-        // 使用泛型就要使用包装类，比较实用equals
+        // 使用泛型，基本属性就要使用包装类
         Integer[] data = new Integer[]{24, 18, 12, 9, 16, 66, 32, 4};
-        int res1 = linearSearch2(data, 16);
-        System.out.println(res1);
-        // 自定义类重写equals
-        Student[] students = {new Student("a"), new Student("b")};
+        System.out.println(linearSearch2(data, 16));
+        // 使用泛型，
+        Student[] students = {new Student("a"), new Student("b"), new Student("c")};
         Student target = new Student("b");
-        int res2 = linearSearch2(students, target);
-        System.out.println(res2);
+        System.out.println(linearSearch2(students, target));
     }
 }

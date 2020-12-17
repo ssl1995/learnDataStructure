@@ -2,17 +2,13 @@ package ssl.stack.practice;
 
 import java.util.Stack;
 
-/**
- * @Author ssl
- * @Date 2020/12/10 13:04
- * @Description
- */
-public class StackToQueue {
+
+public class LC232_2 {
     private Stack<Integer> s1;
     private Stack<Integer> s2;
     private int front;
 
-    public StackToQueue() {
+    public LC232_2() {
         s1 = new Stack<>();
         s2 = new Stack<>();
     }

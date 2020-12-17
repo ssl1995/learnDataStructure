@@ -115,5 +115,4 @@ public class MaxHeap<E extends Comparable<E>> {
         return index * 2 + 2;
     }
 
-
 }

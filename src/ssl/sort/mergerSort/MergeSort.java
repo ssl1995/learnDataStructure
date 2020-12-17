@@ -8,7 +8,6 @@ public class MergeSort {
     }
 
     public static <E extends Comparable<E>> void mergeSort(E[] arr) {
-
         mergeSort(arr, 0, arr.length - 1);
     }
 

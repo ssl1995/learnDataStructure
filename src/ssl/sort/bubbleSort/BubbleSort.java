@@ -6,11 +6,11 @@ public class BubbleSort {
 
     // 冒泡排序1:优化设置交换标志位
     public static <E extends Comparable<E>> void bubbleSort1(E[] arr) {
-        // 外层只需要length-1次
+        // 外层实现比较次数：n-1次
         for (int i = 0; i < arr.length - 1; i++) {
             // 优化：设置交换标志位
             boolean isSwap = false;
-            // 内层每趟只比较相邻元素:j和j+1的元素
+            // 内层实现相邻元素比较：每趟只比较j和j+1的元素
             for (int j = 0; j < arr.length - 1 - i && arr[j].compareTo(arr[j + 1]) > 0; j++) {
                 swap(arr, j, j + 1);
                 isSwap = true;
@@ -28,6 +28,7 @@ public class BubbleSort {
             int lastSwappedIndex = 0;
             for (int j = 0; j < arr.length - 1 - i && arr[j].compareTo(arr[j + 1]) > 0; j++) {
                 swap(arr, j, j + 1);
+                // 最后交换位置肯定是靠后的j+1
                 lastSwappedIndex = j + 1;
             }
             i = arr.length - lastSwappedIndex;

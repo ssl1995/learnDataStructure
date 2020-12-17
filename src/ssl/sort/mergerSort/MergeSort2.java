@@ -1,6 +1,5 @@
 package ssl.sort.mergerSort;
 
-import ssl.sort.insertSort.InsertionSort;
 
 import java.util.Arrays;
 
@@ -9,7 +8,7 @@ public class MergeSort2 {
     private MergeSort2() {
     }
 
-    // 实现自底向上的归并排序
+    // 自底向上的归并排序：未使用插入排序
     public static <E extends Comparable<E>> void mergeSortBu(E[] arr) {
         E[] temp = Arrays.copyOf(arr, arr.length);
         int n = arr.length;
@@ -41,10 +40,9 @@ public class MergeSort2 {
                 arr[k] = temp[j++];
             }
         }
-
     }
 
-    // 实现自底向上的归并排序:使用插入排序优化，指定差距为16
+    // 自底向上的归并排序:使用插入排序优化，指定差距为16
     public static <E extends Comparable<E>> void mergeSortBu1(E[] arr) {
         E[] temp = Arrays.copyOf(arr, arr.length);
         int n = arr.length;
@@ -66,8 +64,6 @@ public class MergeSort2 {
         }
     }
 
-
-    // 优化2：使用插入排序
     public static <E extends Comparable<E>> void insertSort(E[] arr, int l, int r) {
         for (int i = l; i < r; i++) {
             // 用temp存储当前变量
