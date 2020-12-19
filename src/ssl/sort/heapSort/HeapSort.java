@@ -7,7 +7,7 @@ public class HeapSort {
 
     }
 
-    // 堆排序1:使用自己的MaxHeap
+    // 堆排序1:使用自己的MaxHeap,看一遍即可
     public static <E extends Comparable<E>> void heapSort1(E[] data) {
         // 所有元素放进最大堆中，实现从大到小排序
         MaxHeap<E> maxHeap = new MaxHeap<>();
@@ -20,7 +20,7 @@ public class HeapSort {
         }
     }
 
-    // 堆排序2：原地堆排序
+    // 堆排序2：原地堆排序，被这个
     public static <E extends Comparable<E>> void heapSort2(E[] data) {
         if (data.length <= 1) {
             return;

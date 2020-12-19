@@ -41,7 +41,7 @@ public class LC75 {
             // index[i]表示前i的元素的合
             index[i + 1] = index[i] + cnt[i];
         }
-        // 遍历index数组，进行业务逻辑
+        // 以上代码通用，下面根据问题进行业务逻辑编写
         for (int i = 0; i + 1 < index.length; i++) {
             for (int j = index[i]; j < index[i + 1]; j++) {
                 nums[j] = i;

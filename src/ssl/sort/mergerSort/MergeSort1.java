@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public class MergeSort1 {
     private MergeSort1() {
+
     }
 
     public static <E extends Comparable<E>> void mergeSort(E[] arr) {
@@ -30,6 +31,7 @@ public class MergeSort1 {
 
     private static <E extends Comparable<E>> void merge(E[] arr, int l, int mid, int r, E[] temp) {
         // 优化3：在mergesort之前就创建这个辅助数组，减少内存操作
+        // 每次归并完，arr的l到r有序，辅助数组要更新一遍
         System.arraycopy(arr, l, temp, l, r - l + 1);
         int i = l, j = mid + 1;
         // 优化3：merge中没有偏移量的操作了
