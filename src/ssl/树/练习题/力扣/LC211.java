@@ -1,12 +1,7 @@
-package ssl.树.字典树;
+package ssl.树.练习题.力扣;
 
 import java.util.TreeMap;
 
-/**
- * @Author ssl
- * @Date 2020/12/15 16:07
- * @Description
- */
 public class LC211 {
     private class Node {
         public boolean isWord;

@@ -23,6 +23,7 @@ public class QuickSort1 {
         int p = l + random.nextInt(r - l + 1);
         swap(arr, l, p);
         // i指向<=的区间的后一个元素，j指向>=区间的前一个元素
+        // 初始化i指向l前一个位置，j指向数组末尾
         int i = l + 1, j = r;
         while (true) {
             while (i <= j && arr[i].compareTo(arr[l]) < 0) {
@@ -35,9 +36,10 @@ public class QuickSort1 {
             if (i >= j) {
                 break;
             }
-            // 到这里,左边i指向>=，右边j指向<=
-            // 所以，无论什么情况都交换，并且移动指针
+            // 走到这里，说明左边的j指向>=准基，右边的i指向<=准基
+            // 于是，就交换，将j指向的大的数换到i的位置上
             swap(arr, i, j);
+            // 移动指针
             i++;
             j--;
         }

@@ -1,24 +1,11 @@
 package ssl.树.字典树;
 
-
-public class LC208_1 {
+public class TrieByZuo {
     private TrieNode root;
 
-    public class TrieNode {
-        public int path;// 表示经过了多少个当前节点
-        public int end;// 表示有多少个单词以该节点结尾
-        public TrieNode[] map;
-
-        public TrieNode() {
-            path = 0;
-            end = 0;
-            // 字典序长度为26个字符
-            map = new TrieNode[26];
-        }
-    }
-
-    public LC208_1() {
+    public TrieByZuo() {
         root = new TrieNode();
+
     }
 
     public void insert(String word) {
@@ -41,6 +28,27 @@ public class LC208_1 {
         node.end++;
     }
 
+    public void delete(String word) {
+        // 保证单词存在的话，就进行删除，最坏情况末尾才到该单词结束
+        if (search(word)) {
+            char[] chs = word.toCharArray();
+            TrieNode node = root;
+            int index = 0;
+            for (char ch : chs) {
+                index = ch - 'a';
+                // 如果当前节点-1为0，后续就全部删除
+                if (--(node.map[index].path) == 0) {
+                    node.map[index] = null;
+                    return;
+                }
+                node = node.map[index];
+            }
+            // 上面循环跳出，说明node指向树形结构末尾
+            // 在单词存在的情况，末尾元素就是该word，于是end--
+            node.end--;
+        }
+    }
+
     public boolean search(String word) {
         if (word == null) {
             return false;
@@ -58,20 +66,20 @@ public class LC208_1 {
         return node.end != 0;
     }
 
-    public boolean startsWith(String prefix) {
-        if (prefix == null) {
-            return false;
+    public int prefixNumber(String pre) {
+        if (pre == null) {
+            return 0;
         }
-        char[] chs = prefix.toCharArray();
+        char[] chs = pre.toCharArray();
         TrieNode node = root;
         int index = 0;
         for (char ch : chs) {
             index = ch - 'a';
             if (node.map[index] == null) {
-                return false;
+                return 0;
             }
             node = node.map[index];
         }
-        return node.path != 0;
+        return node.path;
     }
 }

@@ -30,22 +30,18 @@ public class MergeSort1 {
 
     private static <E extends Comparable<E>> void merge(E[] arr, int l, int mid, int r, E[] temp) {
         System.arraycopy(arr, l, temp, l, r - l + 1);
-        int i = l, j = mid + 1;
-        // 每轮循环为 arr[k] 赋值
-        for (int k = l; k <= r; k++) {
-
-            if (i > mid) {
-                arr[k] = temp[j];
-                j++;
-            } else if (j > r) {
-                arr[k] = temp[i];
-                i++;
-            } else if (temp[i].compareTo(temp[j]) <= 0) {
-                arr[k] = temp[i];
-                i++;
+        // p,q遍历左右数组
+        int p = l, q = mid + 1;
+        // i遍历原数组
+        for (int i = l; i <= r; i++) {
+            if (p > mid) {
+                arr[i] = temp[q++];
+            } else if (q > r) {
+                arr[i] = temp[p++];
+            } else if (temp[p].compareTo(temp[q]) <= 0) {
+                arr[i] = temp[p++];
             } else {
-                arr[k] = temp[j];
-                j++;
+                arr[i] = temp[q++];
             }
         }
     }

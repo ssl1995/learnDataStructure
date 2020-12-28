@@ -2,6 +2,7 @@ package ssl.排序.mergerSort;
 
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 
 public class MergeSort2 {
@@ -12,7 +13,7 @@ public class MergeSort2 {
     public static <E extends Comparable<E>> void mergeSortBu(E[] arr) {
         E[] temp = Arrays.copyOf(arr, arr.length);
         int n = arr.length;
-        // sz：遍历合并的区间长度
+        // sz：遍历合并的区间长度,初始从一个区间的数组两两合并
         for (int sz = 1; sz < n; sz += sz) {
             // 合并[i,i+size-1]到[i+size,i+size+size-1]
             // i每次移动2个sz距离，才到下一个merge区间

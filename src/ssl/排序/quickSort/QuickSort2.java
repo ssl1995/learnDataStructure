@@ -5,7 +5,8 @@ import java.util.Random;
 public class QuickSort2 {
     private QuickSort2() {
     }
-    // 三路快排
+
+    // 三路快排:波波老师写法
     public static <E extends Comparable<E>> void quickSort3ways(E[] arr) {
         Random random = new Random();
         quickSort3ways(arr, 0, arr.length - 1, random);
@@ -44,5 +45,4 @@ public class QuickSort2 {
         arr[i] = arr[j];
         arr[j] = t;
     }
-
 }

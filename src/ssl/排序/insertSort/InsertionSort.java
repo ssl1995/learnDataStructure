@@ -20,7 +20,7 @@ public class InsertionSort {
         }
     }
 
-    //插入排序2:使用交换
+    //插入排序2:使用交换，性能没有上面好
     public static <E extends Comparable<E>> void insertSort2(E[] arr) {
         for (int i = 1; i < arr.length; i++) {
             for (int j = i - 1; j >= 0 && arr[j].compareTo(arr[j + 1]) > 0; j++) {

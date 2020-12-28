@@ -8,7 +8,7 @@ public class QuickSort {
     }
 
     public static <E extends Comparable<E>> void quickSort(E[] arr) {
-        // 优化二：内存操作只生成一个random
+        // 优化1：内存操作只生成一个random
         Random random = new Random();
         quickSort(arr, 0, arr.length - 1, random);
     }
@@ -20,20 +20,20 @@ public class QuickSort {
         quickSort(arr, p + 1, r, random);
     }
 
-    // 核心：arr[l+1...j] < v ; arr[j+1...i] >= v
     private static <E extends Comparable<E>> int partition(E[] arr, int l, int r, Random random) {
-        // 优化一：生成[l,r]的随机值，解决有序数组的问题
+        // 优化2：生成[l,r]的随机值，解决有序数组的问题
         int p = l + random.nextInt(r - l + 1);
         swap(arr, l, p);
-        // j指向小于v的最后一个元素，i从l+1遍历末尾
+        // 比较基准：arr[l]。j指向<基准的最后一个数的索引，所以是一开始初始化j指向l
         int j = l;
         for (int i = l + 1; i <= r; i++) {
+            // 这里实现了>=的放右边
             if (arr[i].compareTo(arr[l]) < 0) {
                 j++;
                 swap(arr, i, j);
             }
         }
-        // 单路快排出现的问题：如果相同元素过多，每次都比较，然后发生无意义的交换
+        // 循环跳出，将指向<value区间最后一个元素的j与指向枢纽j的元素交换
         swap(arr, l, j);
         return j;
     }
