@@ -1,13 +1,13 @@
-package ssl.栈.练习题.力扣;
+package ssl.栈.练习题.力扣.力扣232_栈实现队列;
 
 import java.util.Stack;
 
-public class LC232_3 {
+public class Solution3 {
     // 左神的解法，统一使用pushToPop方法
     private Stack<Integer> stackPush;
     private Stack<Integer> stackPop;
 
-    public LC232_3() {
+    public Solution3() {
         stackPush = new Stack<Integer>();
         stackPop = new Stack<Integer>();
     }

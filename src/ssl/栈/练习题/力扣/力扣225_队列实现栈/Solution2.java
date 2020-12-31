@@ -1,14 +1,14 @@
-package ssl.栈.练习题.力扣;
+package ssl.栈.练习题.力扣.力扣225_队列实现栈;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 
-public class LC225_2 {
+public class Solution2 {
     // 使用1个队列实现实现栈
     private Queue<Integer> queue;
 
-    public LC225_2() {
+    public Solution2() {
         queue = new LinkedList<>();
     }
 

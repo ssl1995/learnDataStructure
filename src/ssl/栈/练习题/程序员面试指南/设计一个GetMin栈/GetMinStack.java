@@ -1,4 +1,4 @@
-package ssl.栈.练习题.程序员面试指南;
+package ssl.栈.练习题.程序员面试指南.设计一个GetMin栈;
 
 
 import java.util.Stack;

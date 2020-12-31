@@ -1,14 +1,14 @@
-package ssl.栈.练习题.力扣;
+package ssl.栈.练习题.力扣.力扣232_栈实现队列;
 
 import java.util.Stack;
 
 
-public class LC232_2 {
+public class Solution2 {
     private Stack<Integer> s1;
     private Stack<Integer> s2;
     private int front;
 
-    public LC232_2() {
+    public Solution2() {
         s1 = new Stack<>();
         s2 = new Stack<>();
     }

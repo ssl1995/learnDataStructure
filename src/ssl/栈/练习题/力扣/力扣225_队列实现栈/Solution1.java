@@ -1,13 +1,13 @@
-package ssl.栈.练习题.力扣;
+package ssl.栈.练习题.力扣.力扣225_队列实现栈;
 import java.util.LinkedList;
 
 
-public class LC225_1 {
+public class Solution1 {
     // 使用2个队列实现一个栈
     private LinkedList<Integer> q1;
     private LinkedList<Integer> q2;
 
-    public LC225_1() {
+    public Solution1() {
         q1 = new LinkedList<>();
         q2 = new LinkedList<>();
     }
