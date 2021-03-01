@@ -35,7 +35,7 @@ public class SortingHelper {
         else if (sortname.equals("MergeSort"))
             MergeSort.mergeSort(arr);
         else if (sortname.equals("MergeSort1"))
-            MergeSort1.mergeSort(arr);
+            MergeSort1.mergerSort(arr);
         else if (sortname.equals("MergeSort2"))
             MergeSort2.mergeSortBu(arr);
         else if (sortname.equals("QuickSort"))

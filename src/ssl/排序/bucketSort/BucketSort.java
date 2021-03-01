@@ -2,6 +2,7 @@ package ssl.排序.bucketSort;
 
 
 public class BucketSort {
+    // 桶排序：又叫计数排序
     public static void bucketSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;

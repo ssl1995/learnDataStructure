@@ -1,24 +1,19 @@
-package ssl.查找;
+package ssl.查找.二分查找;
 
 public class BinarySearch {
     private BinarySearch() {
     }
 
     /*
-      二分搜索模版一:
+      二分查找1：标准模版
      */
     public static int binarySearch1(int[] nums, int target) {
-        // 边界判断：数组为空或者数组长度为0
         if (nums == null || nums.length == 0) {
             return -1;
         }
-        // 起始条件：0,n-1
         int left = 0, right = nums.length - 1;
-        // 终止条件：left > right
         while (left <= right) {
-            // 获取middle
             int mid = left + (right - left) / 2;
-            // 1 2 3 4 5 mid和target联想
             if (nums[mid] == target) {
                 return mid;
             } else if (nums[mid] < target) {

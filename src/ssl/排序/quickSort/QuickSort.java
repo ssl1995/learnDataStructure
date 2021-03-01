@@ -1,6 +1,7 @@
 package ssl.排序.quickSort;
 
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class QuickSort {
@@ -15,16 +16,19 @@ public class QuickSort {
 
     private static <E extends Comparable<E>> void quickSort(E[] arr, int l, int r, Random random) {
         if (l >= r) return;
+        // 先划分区间
         int p = partition(arr, l, r, random);
+        // 在递归排序
         quickSort(arr, l, p - 1, random);
         quickSort(arr, p + 1, r, random);
     }
 
     private static <E extends Comparable<E>> int partition(E[] arr, int l, int r, Random random) {
-        // 优化2：生成[l,r]的随机值，解决有序数组的问题
+        // 优化2：生成[l,r]的随机值并交换，解决有序数组的问题
         int p = l + random.nextInt(r - l + 1);
         swap(arr, l, p);
-        // 比较基准：arr[l]。j指向<基准的最后一个数的索引，所以是一开始初始化j指向l
+        // 比较基准：arr[l]
+        // j指向<基准的最后一个数的索引
         int j = l;
         for (int i = l + 1; i <= r; i++) {
             // 这里实现了>=的放右边
@@ -44,4 +48,5 @@ public class QuickSort {
         arr[i] = arr[j];
         arr[j] = t;
     }
+
 }

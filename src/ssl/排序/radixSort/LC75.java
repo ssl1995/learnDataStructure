@@ -1,8 +1,8 @@
-package ssl.排序.countSort;
+package ssl.排序.radixSort;
 
 
 public class LC75 {
-    // 计数排序法:针对本题的方法，只能判断指定点的计数排序
+    // 力扣75题：
     public void sortColors(int[] nums) {
         int[] cnt = new int[3];
         // nums[i]对应arr[X]索引的元素个数
@@ -26,9 +26,9 @@ public class LC75 {
         }
     }
 
-    // 计数排序法：通用写法
+    // 基数排序通用写法
     public void sortColors1(int[] nums) {
-        // 1.指定处理元素区间长度R和计数数组cnt，处理元素范围[0,R)的计数排序
+        // 1.指定处理元素区间长度R和计数数组cnt，处理元素范围[0,R)的排序
         int R = 3;
         int[] cnt = new int[R];
         for (int num : nums) {

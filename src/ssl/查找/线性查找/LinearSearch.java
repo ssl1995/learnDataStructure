@@ -1,4 +1,4 @@
-package ssl.查找;
+package ssl.查找.线性查找;
 
 
 import ssl.工具类.Student;

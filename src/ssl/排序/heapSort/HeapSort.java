@@ -2,7 +2,6 @@ package ssl.排序.heapSort;
 
 import ssl.排序.heapSort.堆.MaxHeap;
 
-import java.util.Arrays;
 
 public class HeapSort {
     private HeapSort() {

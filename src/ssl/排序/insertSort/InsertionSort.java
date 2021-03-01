@@ -1,5 +1,7 @@
 package ssl.排序.insertSort;
 
+import java.util.Arrays;
+
 public class InsertionSort {
     private InsertionSort() {
     }
@@ -9,11 +11,9 @@ public class InsertionSort {
         for (int i = 0; i < data.length; i++) {
             E temp = data[i];
             int j;
-            for (j = i; j - 1 >= 0; j--) {
-                // 后移空出位置：如果暂存值小于j-1的值
-                if (temp.compareTo(data[j - 1]) < 0) {
-                    data[j] = data[j - 1];
-                }
+            // 内层循环从后往前找位置腾出
+            for (j = i; j - 1 >= 0 && temp.compareTo(data[j - 1]) < 0; j--) {
+                data[j] = data[j - 1];
             }
             // 空出的位置赋值temp
             data[j] = temp;
@@ -33,6 +33,12 @@ public class InsertionSort {
         E t = arr[i];
         arr[i] = arr[j];
         arr[j] = t;
+    }
+
+    public static void main(String[] args) {
+        Integer[] arr = {6, 2, 5, 7, 8};
+        insertSort1(arr);
+        System.out.println(Arrays.toString(arr));
     }
 
 }

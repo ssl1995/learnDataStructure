@@ -8,21 +8,23 @@ public class MergeSort1 {
 
     }
 
-    public static <E extends Comparable<E>> void mergeSort(E[] arr) {
+    public static <E extends Comparable<E>> void mergerSort(E[] arr) {
         // 优化3：只生成一次辅助数组，并且merge中没有偏移量的操作了
+        // Arrays.copyOf将源数组指定长度的元素复制成一个新数组
         E[] temp = Arrays.copyOf(arr, arr.length);
-        mergeSort(arr, 0, arr.length - 1, temp);
+        mergerSort(arr, 0, arr.length - 1, temp);
     }
 
-    private static <E extends Comparable<E>> void mergeSort(E[] arr, int l, int r, E[] temp) {
-        // 优化2：指定长度内，可以使用直接插入排序优化，但是效果不会明显，不推荐使用
+    private static <E extends Comparable<E>> void mergerSort(E[] arr, int l, int r, E[] temp) {
+        // 优化2：指定长度内，可使用直接插入排序优化，但这种优化效果不明显，所以这里放弃使用
         if (l >= r) {
             return;
         }
+        // 先递归分解
         int mid = l + (r - l) / 2;
-        mergeSort(arr, l, mid, temp);
-        mergeSort(arr, mid + 1, r, temp);
-        // 优化1:mid>mid+1,才归并
+        mergerSort(arr, l, mid, temp);
+        mergerSort(arr, mid + 1, r, temp);
+        // 优化1:arr[mid]>arr[mid]+1,再归并
         if (arr[mid].compareTo(arr[mid + 1]) > 0) {
             merge(arr, l, mid, r, temp);
         }
@@ -44,12 +46,5 @@ public class MergeSort1 {
                 arr[i] = temp[q++];
             }
         }
-    }
-
-
-    public static void main(String[] args) {
-        Integer[] arr = {4, 3, 2, 1};
-        mergeSort(arr);
-        System.out.println(Arrays.toString(arr));
     }
 }
