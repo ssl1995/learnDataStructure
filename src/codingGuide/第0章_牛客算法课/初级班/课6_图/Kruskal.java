@@ -1,8 +1,9 @@
 package codingGuide.第0章_牛客算法课.初级班.课6_图;
 
-import 第0章_牛客算法课.初级班.课6_图.图的数据结构.Edge;
-import 第0章_牛客算法课.初级班.课6_图.图的数据结构.Graph;
-import 第0章_牛客算法课.初级班.课6_图.图的数据结构.Node;
+
+import codingGuide.第0章_牛客算法课.初级班.课6_图.图的数据结构.Edge;
+import codingGuide.第0章_牛客算法课.初级班.课6_图.图的数据结构.Graph;
+import codingGuide.第0章_牛客算法课.初级班.课6_图.图的数据结构.Node;
 
 import java.util.Collection;
 import java.util.Comparator;

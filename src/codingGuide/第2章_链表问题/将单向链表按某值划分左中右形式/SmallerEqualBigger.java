@@ -1,6 +1,7 @@
 package codingGuide.第2章_链表问题.将单向链表按某值划分左中右形式;
 
-import 第0章_牛客算法课.初级班.课4_链表.Node;
+
+import codingGuide.第0章_牛客算法课.初级班.课4_链表.Node;
 
 public class SmallerEqualBigger {
     // 问题：将单链表按照某值划分为左边小、中间相等、右边大

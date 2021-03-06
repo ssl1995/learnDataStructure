@@ -1,6 +1,7 @@
 package codingGuide.第0章_牛客算法课.初级班.课5_二叉树;
 
-import 第3章_二叉树问题.前中后序遍历.力扣.TreeNode;
+import LeetCode.LeetCode104.TreeNode;
+
 
 public class isFullBT {
     class ReturnInfo {
