@@ -1,7 +1,7 @@
-package leetCode.LeetCode21;
+package LeetCode.LeetCode21;
 
+import LeetCode142.ListNode;
 
-import leetCode.LeetCode142.ListNode;
 
 public class Solution {
     // 递归法：深刻学习
