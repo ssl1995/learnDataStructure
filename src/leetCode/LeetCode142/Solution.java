@@ -1,4 +1,4 @@
-package LeetCode.LeetCode142;
+package leetCode.LeetCode142;
 
 // 环形链表2：返回入环的第一个结点
 public class Solution {

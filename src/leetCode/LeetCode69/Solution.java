@@ -1,4 +1,4 @@
-package LeetCode.LeetCode69;
+package leetCode.LeetCode69;
 
 // 平方根问题
 public class Solution {

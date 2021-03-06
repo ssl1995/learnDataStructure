@@ -1,6 +1,7 @@
 package codingGuide.第0章_牛客算法课.初级班.课6_图;
 
-import 第0章_牛客算法课.初级班.课6_图.图的数据结构.Node;
+
+import codingGuide.第0章_牛客算法课.初级班.课6_图.图的数据结构.Node;
 
 import java.util.HashSet;
 import java.util.LinkedList;
