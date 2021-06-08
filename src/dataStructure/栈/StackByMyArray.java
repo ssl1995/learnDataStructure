@@ -3,39 +3,34 @@ package dataStructure.栈;
 
 import dataStructure.数组.Array;
 
-public class ArrayStack<E> implements Stack<E> {
+public class StackByMyArray<E> {
     // 调用自己的数组类
     Array<E> array;
 
-    public ArrayStack(int capacity) {
+    public StackByMyArray(int capacity) {
         array = new Array<>(capacity);
     }
 
-    public ArrayStack() {
+    public StackByMyArray() {
         array = new Array<>();
     }
 
-    @Override
     public void push(E e) {
         array.addLast(e);
     }
 
-    @Override
     public E pop() {
         return array.removeLast();
     }
 
-    @Override
     public E peek() {
         return array.getLast();
     }
 
-    @Override
     public int getSize() {
         return array.getSize();
     }
 
-    @Override
     public boolean isEmpty() {
         return array.isEmpty();
     }

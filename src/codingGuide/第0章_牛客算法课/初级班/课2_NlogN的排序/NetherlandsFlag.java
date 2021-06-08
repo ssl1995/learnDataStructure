@@ -1,5 +1,7 @@
 package codingGuide.第0章_牛客算法课.初级班.课2_NlogN的排序;
 
+import java.util.Arrays;
+
 public class NetherlandsFlag {
     // <=t放左边，>t放右边
     public static void question(int[] arr, int l, int r, int t) {
@@ -24,9 +26,11 @@ public class NetherlandsFlag {
         int less = l - 1;
         int more = r + 1;
         while (l < more) {
+            // 小于和等于才移动遍历指针l
             if (arr[l] < t) {
                 swap(arr, ++less, l++);
             } else if (arr[l] > t) {
+                // 大于不移动遍历指针l
                 swap(arr, --more, l);
             } else {
                 l++;

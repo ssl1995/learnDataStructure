@@ -1,5 +1,7 @@
 package dataStructure.排序.bubbleSort;
 
+import java.util.Arrays;
+
 public class BubbleSort {
     private BubbleSort() {
     }
@@ -14,6 +16,34 @@ public class BubbleSort {
         }
     }
 
+    private static void bubbleSort(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            boolean isSwap = false;
+            for (int j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                    isSwap = true;
+                }
+            }
+            if (!isSwap) {
+                break;
+            }
+        }
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {5, 2, 3, 1};
+        bubbleSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+
     // 冒泡排序1:优化设置交换标志位
     public static <E extends Comparable<E>> void bubbleSort1(E[] arr) {
         // 外层实现比较次数：n-1次
@@ -21,9 +51,11 @@ public class BubbleSort {
             // 优化：设置交换标志位
             boolean isSwap = false;
             // 内层实现相邻元素比较：每趟只比较j和j+1的元素
-            for (int j = 0; j < arr.length - 1 - i && arr[j].compareTo(arr[j + 1]) > 0; j++) {
-                swap(arr, j, j + 1);
-                isSwap = true;
+            for (int j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j].compareTo(arr[j + 1]) > 0) {
+                    swap(arr, j, j + 1);
+                    isSwap = true;
+                }
             }
             // 内层没有发生交换，说明前面已经都排好序了，就不用再次比较
             if (!isSwap) {
@@ -36,10 +68,12 @@ public class BubbleSort {
     public static <E extends Comparable<E>> void bubbleSort2(E[] arr) {
         for (int i = 0; i < arr.length - 1; ) {
             int swapNextIndex = 0;
-            for (int j = 0; j < arr.length - 1 - i && arr[j].compareTo(arr[j + 1]) > 0; j++) {
-                swap(arr, j, j + 1);
-                // 最后交换位置肯定是靠后的j+1
-                swapNextIndex = j + 1;
+            for (int j = 0; j < arr.length - 1 - i ; j++) {
+                if (arr[j].compareTo(arr[j + 1]) > 0) {
+                    swap(arr, j, j + 1);
+                    // 最后交换位置肯定是靠后的j+1
+                    swapNextIndex = j + 1;
+                }
             }
             i = arr.length - swapNextIndex;
         }

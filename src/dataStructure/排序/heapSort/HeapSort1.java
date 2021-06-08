@@ -5,6 +5,7 @@ public class HeapSort1 {
 
     }
 
+    // 左神课上代码
     public static void heapSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;

@@ -10,6 +10,7 @@ public class LinearSearch {
     // 线性查找法：不使用泛型
     public static int linearSearch1(int[] data, int target) {
         for (int i = 0; i < data.length; i++) {
+            // 循环不变量：data[i] == target
             if (data[i] == target) {
                 return i;
             }

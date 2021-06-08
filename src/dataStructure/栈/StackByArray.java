@@ -1,15 +1,15 @@
 package dataStructure.栈;
 
-public class ArrayToStack {
+public class StackByArray {
     private Integer[] arr;
     private Integer index;
 
-    public ArrayToStack(int initSize) {
+    public StackByArray(int initSize) {
         if (initSize < 0) {
             throw new IllegalArgumentException("The init size is less than 0");
         }
         arr = new Integer[initSize];
-        // index=元数个数=无元数的第一个索引
+        // index指向第一个无元素的位置=有元素的下一个位置
         index = 0;
     }
 
@@ -32,7 +32,16 @@ public class ArrayToStack {
         if (index == 0) {
             return null;
         }
+        // index指向第一个无元素的位置=有元素的下一个位置
         return arr[index - 1];
+    }
+
+    public Integer getSize() {
+        return index;
+    }
+
+    public Boolean isEmpty() {
+        return index == 0;
     }
 }
 

@@ -5,16 +5,34 @@ public class SelectionSort {
     private SelectionSort() {
     }
 
+    private static void selectSort(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            int minIndex = i;
+            for (int j = i; j < arr.length; j++) {
+                minIndex = arr[j] < arr[minIndex] ? j : minIndex;
+            }
+            swap(arr,i,minIndex );
+        }
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
     // 选择排序1:从前到后选最小
     public static <E extends Comparable<E>> void selectionSort(E[] arr) {
         for (int i = 0; i < arr.length; i++) {
             int minIndex = i;
             for (int j = i + 1; j < arr.length; j++) {
+                // 循环不变量：minIndex永远指向最小的元素
                 minIndex = arr[minIndex].compareTo(arr[j]) < 0 ? minIndex : j;
             }
             swap(arr, i, minIndex);
         }
     }
+
 
     // 选择排序2从后到前选最大
     public static <E extends Comparable<E>> void selectionSort1(E[] arr) {

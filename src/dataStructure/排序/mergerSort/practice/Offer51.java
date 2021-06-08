@@ -2,25 +2,24 @@ package dataStructure.排序.mergerSort.practice;
 
 // 逆序对问题
 public class Offer51 {
-    // 定义结果返回值
+    // 将res作为参数传递,会出现各种问题,直接定义成员变量省事
     private int res;
 
     // 归并排序法，原理是利用nums[i]>nums[j],那么[i,mid]中都是逆序对个数
     public int reversePairs(int[] nums) {
         int[] temp = new int[nums.length];
         res = 0;
-        sort(nums, 0, nums.length - 1, temp);
+        mergeSort(nums, 0, nums.length - 1, temp);
         return res;
     }
 
-    private void sort(int[] nums, int l, int r, int[] temp) {
+    private void mergeSort(int[] nums, int l, int r, int[] temp) {
         if (l >= r) {
             return;
         }
         int mid = l + (r - l) / 2;
-        sort(nums, l, mid, temp);
-        sort(nums, mid + 1, r, temp);
-        // 关键1：>保证了，如果j位置小于i位置的，左边未排序中的肯定是逆序对
+        mergeSort(nums, l, mid, temp);
+        mergeSort(nums, mid + 1, r, temp);
         if (nums[mid] > nums[mid + 1]) {
             merge(nums, l, mid, r, temp);
         }
@@ -35,12 +34,14 @@ public class Offer51 {
             } else if (q > r) {
                 nums[i] = temp[p++];
             } else if (temp[p] <= temp[q]) {
+                // <=区域不会形成逆序对,所以和归并排序过程一样
                 nums[i] = temp[p++];
             } else {
-                // 关键2：关键1保证了左边>右边,mid到p距离就是逆序对
+                // >说明必构成逆序对:[p,mid]与[mid+1,...]构成逆序对mid-p+1
                 res += mid - p + 1;
                 nums[i] = temp[q++];
             }
         }
     }
+
 }
