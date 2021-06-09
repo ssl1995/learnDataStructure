@@ -1,6 +1,6 @@
 package leetCode.LeetCode21;
 
-import leetCode.LeetCode142.ListNode;
+import leetCode.Utils.ListNode;
 
 public class Solution {
 

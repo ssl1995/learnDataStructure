@@ -1,5 +1,7 @@
 package leetCode.LeetCode142;
 
+import leetCode.Utils.ListNode;
+
 // 环形链表2：返回入环的第一个结点
 public class Solution {
     public ListNode detectCycle(ListNode head) {
