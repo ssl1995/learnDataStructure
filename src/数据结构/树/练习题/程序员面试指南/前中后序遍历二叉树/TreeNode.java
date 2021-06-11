@@ -1,9 +1,9 @@
-package leetCode.LeetCode104;
+package 数据结构.树.练习题.程序员面试指南.前中后序遍历二叉树;
 
 public class TreeNode {
-    public int val;
-    public TreeNode left;
-    public TreeNode right;
+    int val;
+    TreeNode left;
+    TreeNode right;
 
     TreeNode() {
     }
@@ -18,3 +18,6 @@ public class TreeNode {
         this.right = right;
     }
 }
+
+
+
