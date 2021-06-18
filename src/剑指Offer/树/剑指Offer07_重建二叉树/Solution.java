@@ -1,4 +1,4 @@
-package 剑指Offer.递归.剑指Offer07_重建二叉树;
+package 剑指Offer.树.剑指Offer07_重建二叉树;
 
 import leetCode.LeetCode104.TreeNode;
 
@@ -7,6 +7,7 @@ import java.util.HashMap;
 public class Solution {
 
     private int[] preOrder;
+    // 快速获取中序数组中元素的下标
     private HashMap<Integer, Integer> inOrderMap = new HashMap<>();
 
     public TreeNode buildTree(int[] preorder, int[] inorder) {
