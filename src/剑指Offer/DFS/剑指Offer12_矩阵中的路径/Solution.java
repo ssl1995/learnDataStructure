@@ -25,6 +25,7 @@ public class Solution {
         }
         // 递归未结束,将当前元素设为空字符,防止后面递归重复访问
         board[row][col] = '\0';
+        // 或:代表找到一个可执行路径就直接返回,不需要再次递归下去
         boolean res = (bfs(board, word, row + 1, col, k + 1) || bfs(board, word, row - 1, col, k + 1)
                 || bfs(board, word, row, col + 1, k + 1) || bfs(board, word, row, col - 1, k + 1));
         // 难点：递归结束,回溯时候,重新将字符设为原值

@@ -4,80 +4,136 @@ public class BinarySearch {
     private BinarySearch() {
     }
 
-    /*
-      二分查找1：标准模版
-     */
-    public static int binarySearch1(int[] nums, int target) {
+    // 标准二分查找
+    public static int binarySearch(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
             return -1;
         }
         int left = 0, right = nums.length - 1;
+        // 标准二分:[left,right]两端都是闭区间
         while (left <= right) {
             int mid = left + (right - left) / 2;
-            if (nums[mid] == target) {
-                return mid;
-            } else if (nums[mid] < target) {
+            if (nums[mid] < target) {
                 left = mid + 1;
-            } else {
+            } else if (nums[mid] > target) {
                 right = mid - 1;
+            } else {
+                return mid;
             }
         }
         return -1;
     }
 
-    /*                0 1 2 3 4
-      二分搜索模版二:  [1 2 3 4 5]
-                    left=0,right=5
-                    mid=2,num[2]=3,若target=1
-     */
-    public static int binarySearch2(int[] nums, int target) {
-        // 边界判断：数组为空或者数组长度为0
+    // 搜索左侧区间的二分查找:常见写法
+    public static int leftBinarySearch(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
             return -1;
         }
         // 起始条件：0,n
         int left = 0, right = nums.length;
-        // nums[l,r)，右边成闭区间
+        // 左侧区间的二分查找:[l,r)
         while (left < right) {
             int mid = left + (right - left) / 2;
-            if (nums[mid] == target) {
-                return mid;
-            }// 左边界，不变
-            else if (nums[mid] < target) {
+            if (nums[mid] < target) {// <区间,left是闭区间,所以+1和标准写法一致
                 left = mid + 1;
-            }// 右边边界扩大，右指针不用mid-1
-            else if (nums[mid] > target) {
+            } else if (nums[mid] > target) {// >区间,right是开区间,等于mid才行
+                right = mid;
+            } else {// =区间,由于是找左侧边界,收缩右边界即可
                 right = mid;
             }
         }
-        // 无条件符合，跳出循环后，需要进行后处理
-        // 判断：left不超出数组长度 && nums[left] == target
-        if (left != nums.length && nums[left] == target) return left;
-        return -1;
+        // 边界条件:[left,nums.len),当left来到nums.len(数组长度的索引处)肯定没找到,返回-1
+        if (left == nums.length) {
+            return -1;
+        }
+        return nums[left] == target ? left : -1;
     }
 
-    /*
-     二分搜索模版三：
-    */
-    public static int binarySearch3(int[] nums, int target) {
-        if (nums == null || nums.length == 0) {
+    // 搜索左侧区间的二分查找:统一成标准二分查找的写法
+    public static int leftBinarySearch1(int[] nums, int target) {
+        if (nums.length == 0) {
             return -1;
         }
         int left = 0, right = nums.length - 1;
-        while (left + 1 < right) {
+        while (left <= right) {
             int mid = left + (right - left) / 2;
-            if (nums[mid] == target) {
-                return mid;
-            } else if (nums[mid] < target) {
-                left = mid;
+            if (nums[mid] < target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid - 1;
             } else {
-                right = mid;
+                // =时，收缩区间
+                right = mid - 1;
             }
         }
-        if (nums[left] == target) return left;
-        if (nums[right] == target) return right;
-        return -1;
+        // 检查边界
+        if (left > nums.length - 1 || nums[left] != target) {
+            return -1;
+        }
+        return left;
     }
+
+    // 右侧区间的二分查找
+    public static int rightBinarySearch1(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        // 起始条件：0,n
+        int left = 0, right = nums.length;
+        // 左侧区间的二分查找:[l,r)
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid;
+            } else {
+                // =时,查找右侧区间,left变大
+                left = mid + 1;
+            }
+        }
+        // 边界条件:查找右侧区间,左边界到达坐标0点都没找到,返回-1
+        if (left == 0) {
+            return -1;
+        }
+        // 由于相等时,left = mid + 1,所以nums[left-1]才是=target的
+        return nums[left - 1] == target ? left - 1 : -1;
+    }
+
+    // 右侧区间的二分查找:统一成标准二分查找的写法
+    public static int rightBinarySearch2(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        // 起始条件：0,n
+        int left = 0, right = nums.length - 1;
+        // 左侧区间的二分查找:[l,r)
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid - 1;
+            } else {
+                // =时,查找右侧区间,left变大
+                left = mid + 1;
+            }
+        }
+        if (right < 0 || nums[right] != target) {
+            return -1;
+        }
+        return right;
+    }
+
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 2, 2, 3};
+        System.out.println(leftBinarySearch(nums, 2));
+        System.out.println(leftBinarySearch1(nums, 2));
+        System.out.println(rightBinarySearch1(nums, 2));
+        System.out.println(rightBinarySearch2(nums, 2));
+    }
+
 
     /*
       二分查找-递归方式
@@ -237,12 +293,5 @@ public class BinarySearch {
             return l;
         }
         return -1;
-    }
-
-    public static void main(String[] args) {
-        Integer[] nums = {1, 1, 3, 3, 5, 5};
-        int target = 1;
-        int res = lower(nums, target);
-        System.out.println("lower:" + res);
     }
 }
