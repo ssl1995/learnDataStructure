@@ -1,4 +1,4 @@
-package 剑指Offer.DFS.剑指Offer28_对称二叉树;
+package 剑指Offer.树.剑指Offer28_对称二叉树;
 
 
 import leetCode.LeetCode104.TreeNode;

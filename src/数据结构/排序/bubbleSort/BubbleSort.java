@@ -46,7 +46,7 @@ public class BubbleSort {
 
     // 冒泡排序1:优化设置交换标志位
     public static <E extends Comparable<E>> void bubbleSort1(E[] arr) {
-        // 外层实现比较次数：n-1次
+        // i是冒泡次数:n个数最多需要比较冒泡n-1次
         for (int i = 0; i < arr.length - 1; i++) {
             // 优化：设置交换标志位
             boolean isSwap = false;
@@ -68,7 +68,7 @@ public class BubbleSort {
     public static <E extends Comparable<E>> void bubbleSort2(E[] arr) {
         for (int i = 0; i < arr.length - 1; ) {
             int swapNextIndex = 0;
-            for (int j = 0; j < arr.length - 1 - i ; j++) {
+            for (int j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j].compareTo(arr[j + 1]) > 0) {
                     swap(arr, j, j + 1);
                     // 最后交换位置肯定是靠后的j+1

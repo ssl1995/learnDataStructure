@@ -1,4 +1,4 @@
-package 剑指Offer.DFS.剑指Offer54_二叉搜索树的第K个节点;
+package 剑指Offer.树.剑指Offer54_二叉搜索树的第K个节点;
 
 import leetCode.LeetCode104.TreeNode;
 

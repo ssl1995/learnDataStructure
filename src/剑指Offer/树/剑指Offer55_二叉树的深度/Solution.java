@@ -1,4 +1,4 @@
-package 剑指Offer.DFS.剑指Offer55_二叉树的深度;
+package 剑指Offer.树.剑指Offer55_二叉树的深度;
 
 import leetCode.LeetCode104.TreeNode;
 

@@ -1,4 +1,4 @@
-package 剑指Offer.递归.剑指Offer64_求1加到n;
+package 剑指Offer.位运算.剑指Offer64_求1加到n;
 
 public class Solution {
 
