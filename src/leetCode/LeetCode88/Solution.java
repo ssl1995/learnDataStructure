@@ -1,6 +1,5 @@
 package leetCode.LeetCode88;
 
-import java.util.Arrays;
 
 // 合并两个有序数组
 public class Solution {
