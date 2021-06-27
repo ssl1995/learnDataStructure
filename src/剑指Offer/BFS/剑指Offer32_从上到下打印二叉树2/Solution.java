@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Solution {
 
-    // 难点:是temp的循环条件
+    // 难点: i = queue.size(); i > 0
     public List<List<Integer>> levelOrder(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
@@ -20,8 +20,8 @@ public class Solution {
             // temp存每一行的数据
             List<Integer> temp = new ArrayList<>();
             // 如下是错误的:for (int i = 0; i < queue.size(); i++)
-            // 因为queue的长度每次循环内部都在改变,所以不能以size为遍历结束条件
             for (int i = queue.size(); i > 0; i--) {
+                // 因为queue的长度每次循环内部都在改变,所以不能以size为遍历结束条件
                 TreeNode node = queue.poll();
                 temp.add(node.val);
                 if (node.left != null) {

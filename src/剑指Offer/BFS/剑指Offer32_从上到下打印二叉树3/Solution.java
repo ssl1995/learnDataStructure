@@ -8,86 +8,80 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
-    // 之字型打印二叉树
-    public List<List<Integer>> levelOrder(TreeNode root) {
+
+    // 法1:延续打印二叉树1,2的套路,利用res长度判断奇偶
+    public List<List<Integer>> levelOrder1(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
         }
-        // 双端队列:存之字型
-        Deque<TreeNode> dq = new LinkedList<>();
-        dq.offerFirst(root);
-        // 先从左到右
-        boolean left2Right = true;
-        // 当前层的最后一个结点
-        TreeNode curLast = root;
-        // 下一层的最后一个结点
-        TreeNode nextLast = null;
-        List<List<Integer>> res = new ArrayList<>();
-        List<Integer> temp = new ArrayList<>();
-        while (!dq.isEmpty()) {
-            // 从左到右遍历
-            if (left2Right) {
-                // 当前节点从头出,左右孩子从尾进
-                root = dq.pollFirst();
-                if (root.left != null) {
-                    // 下一层最后打印的节点是当前层有孩子节点的节点中最先进入dq的节点
-                    // 所以每一次都判断,nLast永远指向第一次进入队列的结点=出队列时最后一个一个结点
-                    nextLast = (nextLast == null) ? root.left : nextLast;
-                    dq.offerLast(root.left);
+        List<List<Integer>> res = new LinkedList<>();
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            LinkedList<Integer> temp = new LinkedList<>();
+            for (int i = queue.size(); i > 0; i--) {
+                // 辅助链表存每一层的结点
+                TreeNode node = queue.poll();
+                // 利用res的元素个数判断奇偶层
+                if (res.size() % 2 == 0) { // 奇数层,正常从尾部进队列
+                    temp.addLast(node.val);
+                } else {// 偶数层,从头部进队列
+                    temp.addFirst(node.val);
                 }
-                if (root.right != null) {
-                    nextLast = (nextLast == null) ? root.right : nextLast;
-                    dq.offerLast(root.right);
+                // queue存左右孩子节点
+                if (node.left != null) {
+                    queue.add(node.left);
                 }
-            } else {   // 从右到左遍历
-                // 当前节点从尾出,右左孩子从头进
-                root = dq.pollLast();
-                if (root.right != null) {
-                    nextLast = (nextLast == null) ? root.right : nextLast;
-                    dq.offerFirst(root.right);
-                }
-                if (root.left != null) {
-                    nextLast = (nextLast == null) ? root.left : nextLast;
-                    dq.offerFirst(root.left);
+                if (node.right != null) {
+                    queue.add(node.right);
                 }
             }
-            // 当前结点值入temp队列
-            temp.add(root.val);
-            // 当前节点指向当前层最后一个结点,且队列非空
-            if (root == curLast && !dq.isEmpty()) {
-                left2Right = !left2Right;
-                curLast = nextLast;
-                nextLast = null;
-                // 当前层加入到结果集
-                res.add(temp);
-                // 重点:temp链表必须重置
-                temp = new ArrayList<>();
-            }
-            //当前节点指向当前层最后一个结点,且队列空 = 遍历到最后一个子树,加入到结果集即可
-            if (root == curLast && dq.isEmpty()) {
-                res.add(temp);
-            }
+            res.add(temp);
         }
         return res;
     }
 
-    public static void main(String[] args) {
-        TreeNode root = new TreeNode(3);
-        TreeNode node1 = new TreeNode(9);
-        TreeNode node2 = new TreeNode(20);
-        TreeNode node3 = new TreeNode(15);
-        TreeNode node4 = new TreeNode(7);
-
-        node2.left = node3;
-        node2.right = node4;
-
-        root.left = node1;
-        root.right = node2;
-
-        Solution solution = new Solution();
-        List<List<Integer>> res = solution.levelOrder(root);
-
-        System.out.println(res);
-
+    // 法2:奇偶分层加入双端队列
+    public List<List<Integer>> levelOrder2(TreeNode root) {
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        List<List<Integer>> res = new LinkedList<>();
+        LinkedList<TreeNode> dequeue = new LinkedList<>();
+        dequeue.add(root);
+        while (!dequeue.isEmpty()) {
+            ArrayList<Integer> temp = new ArrayList<>();
+            // 打印偶数层节点：头进尾出,保证从左到右出
+            for (int i = dequeue.size(); i > 0; i--) {
+                TreeNode node = dequeue.removeFirst();
+                temp.add(node.val);
+                if (node.left != null) {
+                    dequeue.addLast(node.left);
+                }
+                if (node.right != null) {
+                    dequeue.addLast(node.right);
+                }
+            }
+            res.add(temp);
+            // 若无偶数层节点，就跳出
+            if (dequeue.isEmpty()) {
+                break;
+            }
+            // 打印偶数层节点：尾进头出,保证从右往左出
+            temp = new ArrayList<>();// temp每次更换需要重新指向新的链表
+            for (int i = dequeue.size(); i > 0; i--) {
+                TreeNode node = dequeue.removeLast();
+                temp.add(node.val);
+                // 偶数层从右往左入节点
+                if (node.right != null) {
+                    dequeue.addFirst(node.right);
+                }
+                if (node.left != null) {
+                    dequeue.addFirst(node.left);
+                }
+            }
+            res.add(temp);
+        }
+        return res;
     }
 }
