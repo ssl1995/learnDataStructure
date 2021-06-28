@@ -6,17 +6,20 @@ public class Solution {
         if (nums.length == 1) {
             return nums[0];
         }
-        // 初始化dp
+        // 初始化dp:dp[i]表示nums中前i个元素的最大和
         int[] dp = new int[nums.length];
-        dp[0] = nums[0];
-        // 最大值初始化就是nums[0],千万别是0或者整型最小值
+        dp[0] = nums[0];// 第0个元素的最大和为它本身
+        // 初始化最大和的最大值=nums[0],千万别是0或者整型最小值
         int max = nums[0];
+        // 从第二个数开始遍历数组
         for (int i = 1; i < nums.length; i++) {
+            // 前i-1元素的最大和<=0,产生负影响,舍弃
             if (dp[i - 1] <= 0) {
                 dp[i] = nums[i];
-            } else {
+            } else {// 前i-1元素的最大和<=0,产生正影响
                 dp[i] = dp[i - 1] + nums[i];
             }
+            // 更新最大值
             max = Math.max(max, dp[i]);
         }
         return max;
@@ -26,7 +29,12 @@ public class Solution {
     public int maxSubArray2(int[] nums) {
         int max = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            nums[i] += Math.max(nums[i - 1], 0);
+            if (nums[i - 1] <= 0) {
+                nums[i] = nums[i];
+            } else {
+                nums[i] = nums[i] + nums[i - 1];
+            }
+            // 以上语句可用这个替代:nums[i] += Math.max(nums[i - 1], 0);
             max = Math.max(nums[i], max);
         }
         return max;
