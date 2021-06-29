@@ -1,4 +1,4 @@
-package 剑指Offer.DFS.剑指Offer12_矩阵中的路径;
+package 剑指Offer.递归.剑指Offer12_矩阵中的路径;
 
 public class Solution {
     public boolean exist(char[][] board, String word) {

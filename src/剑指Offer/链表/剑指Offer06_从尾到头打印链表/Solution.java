@@ -1,4 +1,4 @@
-package 剑指Offer.栈与队列.剑指Offer06_从尾到头打印链表;
+package 剑指Offer.链表.剑指Offer06_从尾到头打印链表;
 
 import leetCode.Utils.ListNode;
 
@@ -24,11 +24,11 @@ public class Solution {
         return res;
     }
 
-    // 法2:递归法,先理解辅助栈法,体会递归本质这种先进后出的希望
+    // 法2:递归法,先理解辅助栈法,体会递归本质这种先进后出的思想
     public int[] reversePrint1(ListNode head) {
         // 存放递归逆序后的值
         List<Integer> temp = new ArrayList<>();
-        // 递归:本质上是一个先进后出的栈,temp中存放了逆序后的所以val
+        // 递归:本质上是一个先进后出的栈,temp中存放了逆序后的val
         reverse(head, temp);
         // 将List中的val遍历进一个返回值数组中即可
         int[] res = new int[temp.size()];

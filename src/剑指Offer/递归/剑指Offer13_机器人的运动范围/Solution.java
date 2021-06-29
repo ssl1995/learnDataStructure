@@ -1,4 +1,4 @@
-package 剑指Offer.DFS.剑指Offer13_机器人的运动范围;
+package 剑指Offer.递归.剑指Offer13_机器人的运动范围;
 
 public class Solution {
 

@@ -4,26 +4,30 @@ public class Solution {
 
     // 返回第n个丑数,丑数是只含2,3,5的因数
     public int nthUglyNumber(int n) {
-        int indexA = 0, indexB = 0, indexC = 0;
+        // 初始化:三个指针,a指向2倍数,b指向3倍数,c指向5倍数
+        int a = 0, b = 0, c = 0;
+        // dp[i]表示第i+1个丑数
         int[] dp = new int[n];
-        // 初始化第一个丑数为1
+        // 初始化dp:dp[0]=1,第一个丑数是1
         dp[0] = 1;
-        // 从dp[1]开始选
         for (int i = 1; i < n; i++) {
-            // dp[i]=min{dp[indexA],dp[indexB],dp[indexC]}
-            int n1 = dp[indexA] * 2;
-            int n2 = dp[indexB] * 3;
-            int n3 = dp[indexC] * 5;
+            // 公式:dp[i]=min{dp[a-1]*2,dp[b-1]*3,dp[c-1]*5}
+            int n1 = dp[a] * 2;
+            int n2 = dp[b] * 3;
+            int n3 = dp[c] * 5;
             dp[i] = Math.min(Math.min(n1, n2), n3);
-            // 谁被选中作为最小值的index,谁就后移一位
+            // 接下来移动指针
+            // dp[a-1]*2<=dp[i]<dp[a]*2
             if (dp[i] == n1) {
-                indexA++;
+                a++;
             }
+            // dp[b-1]*3<=dp[i]<dp[b]*3
             if (dp[i] == n2) {
-                indexB++;
+                b++;
             }
+            // dp[c-1]*5<=dp[i]<dp[c]*5
             if (dp[i] == n3) {
-                indexC++;
+                c++;
             }
         }
         return dp[n - 1];

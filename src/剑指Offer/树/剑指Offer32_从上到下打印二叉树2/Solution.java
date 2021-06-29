@@ -1,4 +1,4 @@
-package 剑指Offer.BFS.剑指Offer32_从上到下打印二叉树2;
+package 剑指Offer.树.剑指Offer32_从上到下打印二叉树2;
 
 import leetCode.LeetCode104.TreeNode;
 

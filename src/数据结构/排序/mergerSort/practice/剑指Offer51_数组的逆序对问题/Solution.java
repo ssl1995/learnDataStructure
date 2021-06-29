@@ -1,7 +1,7 @@
-package 数据结构.排序.mergerSort.practice;
+package 数据结构.排序.mergerSort.practice.剑指Offer51_数组的逆序对问题;
 
 // 逆序对问题
-public class Offer51 {
+public class Solution {
     // 将res作为参数传递,会出现各种问题,直接定义成员变量省事
     private int res;
 
