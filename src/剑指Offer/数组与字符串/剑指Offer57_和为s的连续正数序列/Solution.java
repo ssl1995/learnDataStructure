@@ -6,36 +6,28 @@ import java.util.List;
 public class Solution {
 
     public int[][] findContinuousSequence(int target) {
-        // 1.滑动窗口左右指针只能往后移,并且是左闭右开[left,right)
-        // 因为是正数连续序列,初始化为[1,1)左闭右开,sum=0
-        int left = 1;
-        int right = 1;
-        int sum = 0;
-        // 结果集:不知道返回值二维数组有多少个,所以暂时用链表存储
-        List<int[]> list = new ArrayList<>();
-        // 遍历:left<=target/2
-        // 因为正数连续,如果left过了一半,left+(left+1)必超过target
-        while (left <= (target / 2)) {
-            if (sum < target) {// 窗口和小了
-                // sum加上右指针值,再右指针后移
-                sum += right;
-                right++;
-            } else if (sum > target) {// 窗口和大了
-                // sum先减左指针值,再左指针后移
-                sum -= left;
-                left++;
-            } else {// 窗口和=target
-                // 窗口左闭右开[left,right),长度=right-left
-                int[] temp = new int[right - left];
-                for (int i = left; i < right; i++) {
-                    temp[i - left] = i;
+        // 初始化:i左边数,初试化为1;j右边数,初试化为2;所以初始化sum为3
+        int i = 1, j = 2, sum = 3;
+        // 不知道结果数组多大,暂时使用链表存储结果
+        List<int[]> res = new ArrayList<>();
+        // 循环结束:左边界数和右边界数相等,跳出循环
+        while (i < j) {
+            // 相等时,记录结果到临时一维数组,最后加入res链表中
+            if (sum == target) {
+                int[] temp = new int[j - i + 1];
+                for (int k = i; k <= j; k++) {
+                    temp[k - i] = k;
                 }
-                list.add(temp);
-                // 窗口和=target,sum减去左指针,左指针后移,右指针不动
-                sum -= left;
-                left++;
+                res.add(temp);
+            }
+            // 移动窗口和指针,>和=逻辑相同,合并在一起书写
+            if (sum >= target) {
+                sum -= i++;
+            } else {
+                sum += ++j;
             }
         }
-        return list.toArray(new int[list.size()][]);
+        // Java中二维数组列数可变
+        return res.toArray(new int[0][]);
     }
 }

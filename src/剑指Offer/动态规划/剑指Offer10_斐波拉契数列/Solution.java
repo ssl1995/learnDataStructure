@@ -19,17 +19,18 @@ public class Solution {
         return sum;
     }
 
-    // 法1更简单的写法
+    // 法2:动态规划法
     public int fib2(int n) {
-        int a = 0;
-        int b = 1;
-        int sum = 0;
-        for (int i = 0; i < n; i++) {
-            sum = (a + b) % 1000000007;
-            a = b;
-            b = sum;
+        if (n < 2) {
+            return n;
         }
-        // 返回a
-        return a;
+        // dp[i]表示第i个斐波那契数
+        int[] dp = new int[n + 1];
+        dp[0] = 0;
+        dp[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            dp[i] = (dp[i - 1] + dp[i - 2]) % 1000000007;
+        }
+        return dp[n];
     }
 }

@@ -1,4 +1,4 @@
-package 剑指Offer.栈与队列.剑指Offer59_I滑动窗口最大值;
+package 剑指Offer.栈与队列.剑指Offer59_I_滑动窗口最大值;
 
 import java.util.LinkedList;
 
@@ -8,21 +8,24 @@ public class Solution {
         if (nums == null || nums.length < k || k < 1) {
             return new int[]{};
         }
-        // 双端队列:[对头,...,队尾],存区间下标
+        // 双端队列:[队头,...,队尾],存区间下标
         LinkedList<Integer> dequeue = new LinkedList<>();
+        // 滑动窗口个数:nums.length - k + 1
         int[] res = new int[nums.length - k + 1];
         int index = 0;
+        // 遍历原数组
         for (int i = 0; i < nums.length; i++) {
-            // 队头,永远只存最大值,队头后面永远元素都比队头小
+            // 队头:存最大值
+            // 当前加入的元素>=对尾元素,队尾元素出队
             while (!dequeue.isEmpty() && nums[i] >= nums[dequeue.peekLast()]) {
                 dequeue.pollLast();
             }
             dequeue.addLast(i);
-            // 队列长度:队头长度=i-k,队头下标已过窗口长度,移除队头下标
+            // 队头弹出:如果队头坐标到达i-k,队头元素就过期了,弹出队头
             if (dequeue.peekFirst() == i - k) {
                 dequeue.pollFirst();
             }
-            // 遍历下标只要越过k-1,每次都要记录一个最大值
+            // 记录窗口最大值:从k-1下标开始,每次遍历都要记录一次最大值进结果数组中
             if (i >= k - 1) {
                 res[index++] = nums[dequeue.peekFirst()];
             }

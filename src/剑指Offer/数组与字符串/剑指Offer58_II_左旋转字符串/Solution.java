@@ -1,6 +1,7 @@
-package 剑指Offer.数组与字符串.剑指Offer58_左旋转字符串;
+package 剑指Offer.数组与字符串.剑指Offer58_II_左旋转字符串;
 
 public class Solution {
+
     // 法1:使用String库函数subString()
     public String reverseLeftWords1(String s, int n) {
         StringBuilder sb = new StringBuilder();
@@ -9,12 +10,13 @@ public class Solution {
         return sb.toString();
     }
 
-    // 法2:
+    // 法2:取余法
     public String reverseLeftWords2(String s, int n) {
         int len = s.length();
         StringBuilder sb = new StringBuilder();
+        // 原s:[0,n-1,n,...,len-1]
+        // 新sb:[n,...,len-1,len,...,n+len-1]
         for (int i = n; i < n + len; i++) {
-            // 使用取余运算简化代码=越过len,从头开始
             sb.append(s.charAt(i % len));
         }
         return sb.toString();

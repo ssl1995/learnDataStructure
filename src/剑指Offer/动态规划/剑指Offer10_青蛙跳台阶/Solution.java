@@ -2,8 +2,8 @@ package 剑指Offer.动态规划.剑指Offer10_青蛙跳台阶;
 
 public class Solution {
 
-    // 和斐波那契很像,就是初始化条件不一样
-    public int numWays(int n) {
+    // 法1:迭代法
+    public int numWays1(int n) {
         if (n == 0 || n == 1) {
             return 1;
         }
@@ -16,5 +16,20 @@ public class Solution {
             b = sum;
         }
         return sum;
+    }
+
+    // 法2:动态规划法
+    public int numWays2(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        // dp[i]表示第i个斐波那契数
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
+        dp[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            dp[i] = (dp[i - 1] + dp[i - 2]) % 1000000007;
+        }
+        return dp[n];
     }
 }

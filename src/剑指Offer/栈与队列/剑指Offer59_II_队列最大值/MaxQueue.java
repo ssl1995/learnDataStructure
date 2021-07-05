@@ -1,13 +1,13 @@
-package 剑指Offer.栈与队列.剑指Offer59_II队列最大值;
+package 剑指Offer.栈与队列.剑指Offer59_II_队列最大值;
 
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class MaxQueue {
-    // 普通队列保证push、pop
+    // 普通队列:正常的push、pop
     private Queue<Integer> queue;
-    // 双端队列保持单调性:新加入的元素<=队尾元素
+    // 双端队列:队头保证是最大值
     private Deque<Integer> deque;
 
     public MaxQueue() {
@@ -17,11 +17,10 @@ public class MaxQueue {
 
 
     public void push_back(int value) {
-        // 先加元素>双端队列队尾,双端队列出队找<=的第一个元素
+        // 待加元素>双端队列队尾元素,双端队列队尾就一直出队
         while (!deque.isEmpty() && value > deque.peekLast()) {
             deque.pollLast();
         }
-        // 双端队列:对头只存最大的
         deque.offerLast(value);
         queue.offer(value);
     }
@@ -31,6 +30,7 @@ public class MaxQueue {
             return -1;
         }
         int value = queue.poll();
+        // 待出队元素,和最大值相同,双端队列队头出队
         if (value == max_value()) {
             deque.pollFirst();
         }
@@ -54,6 +54,4 @@ public class MaxQueue {
         System.out.println(queue.peekFirst());// 1
         System.out.println(queue.peekLast());// 4
     }
-
-
 }
