@@ -1,7 +1,4 @@
-package 程序员代码面试指南.第2章_链表问题.将单向链表按某值划分左中右形式;
-
-
-import 牛客算法课.初级班.课4_链表.Node;
+package 牛客算法课.初级班.课4_链表;
 
 public class SmallerEqualBigger {
     // 问题：将单链表按照某值划分为左边小、中间相等、右边大
@@ -57,4 +54,29 @@ public class SmallerEqualBigger {
         // 返回不为空的各个部分的头
         return (s1 != null) ? s1 : (e1 != null ? e1 : b1);
     }
+
+    public static void printLinkedList(Node node) {
+        System.out.print("Linked List: ");
+        while (node != null) {
+            System.out.print(node.value + " ");
+            node = node.next;
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Node head1 = new Node(7);
+        head1.next = new Node(9);
+        head1.next.next = new Node(1);
+        head1.next.next.next = new Node(8);
+        head1.next.next.next.next = new Node(5);
+        head1.next.next.next.next.next = new Node(2);
+        head1.next.next.next.next.next.next = new Node(5);
+        printLinkedList(head1);
+        // head1 = listPartition1(head1, 4);
+        head1 = listPartition2(head1, 5);
+        printLinkedList(head1);
+
+    }
+
 }

@@ -1,7 +1,7 @@
-package 程序员代码面试指南.第4章_递归和动态规划.N皇后问题;
+package 牛客算法课.初级班.课8_暴力递归;
 
-public class Solution {
 
+public class NQueens {
     // N皇后问题：N个数，在N*N的数组中，每个数都不共行、列和斜线
     // 学完num1方法，LC51_NQueens怎么改写成num1
     public static int num1(int n) {
@@ -21,7 +21,7 @@ public class Solution {
      * 返回值：摆完目前所有的皇后，合理的摆法数量
      */
     public static int process1(int i, int[] record, int n) {
-        // 递归结束条件：i来到n行,数组下标越界的位置,说明[0,n-1]已经保证了有一种皇后的摆法,此时就是一种成功摆法,返回1
+        // 递归结束条件：如果i来到终止行，潜台词就是前面i-1行保证了N皇后的条件，所以最后一行返回1
         if (i == n) {
             return 1;
         }
@@ -79,7 +79,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        int n = 8;
+        int n = 14;
 
         long start = System.currentTimeMillis();
         System.out.println(num2(n));
