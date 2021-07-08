@@ -2,7 +2,8 @@ package 牛客算法课.初级班.课5_二叉树;
 
 
 
-import 程序员代码面试指南.第3章_二叉树问题.前中后序遍历.力扣.TreeNode;
+
+import 牛客算法课.utils.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Stack;

@@ -1,7 +1,7 @@
 package 牛客算法课.初级班.课5_二叉树;
 
-import leetCode.LeetCode104.TreeNode;
 
+import 牛客算法课.utils.TreeNode;
 
 public class isFullBT {
     class ReturnInfo {

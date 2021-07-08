@@ -1,6 +1,6 @@
 package 数据结构.树.练习题.力扣.力扣226_翻转二叉树;
 
-import leetCode.LeetCode104.TreeNode;
+import 牛客算法课.utils.TreeNode;
 
 import java.util.LinkedList;
 

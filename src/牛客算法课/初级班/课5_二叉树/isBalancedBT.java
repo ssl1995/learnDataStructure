@@ -1,6 +1,7 @@
 package 牛客算法课.初级班.课5_二叉树;
 
-import leetCode.LeetCode104.TreeNode;
+
+import 牛客算法课.utils.TreeNode;
 
 public class isBalancedBT {
     // 判断是否是平衡二叉树，需要子树的两个信息：平衡和高度
