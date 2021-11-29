@@ -1,4 +1,4 @@
-package 数据结构与算法之美;
+package 数据结构与算法之美.第1章_时间复杂度分析;
 
 /**
  * @author SongShengLin
@@ -13,6 +13,7 @@ public class SharingTimeComplexity {
      * 时间复杂度：采用均摊时间复杂度的方法，本题的时间复杂度还是O(1)
      */
     private void insert(int val) {
+        // 摊还时间复杂度：1.大多数情况下是O(1)，极个别是O(n);2.出现的频率是有规律的，且有一定先后次序
         if (count == arr.length) {
             int sum = 0;
             for (int num : arr) {
