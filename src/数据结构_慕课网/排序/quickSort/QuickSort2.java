@@ -14,7 +14,9 @@ public class QuickSort2 {
     }
 
     private static <E extends Comparable<E>> void quickSort3ways(E[] arr, int l, int r, Random random) {
-        if (l >= r) return;
+        if (l >= r) {
+            return;
+        }
 
         // 分治:因为三路快排中间不用递归,避免partition返回值麻烦,所以partition和quickSort3ways写在一起
 

@@ -16,7 +16,9 @@ public class QuickSort {
 
     private static <E extends Comparable<E>> void quickSort(E[] arr, int l, int r, Random random) {
         // 递归结束条件:显然只剩一个数时,递归结束
-        if (l >= r) return;
+        if (l >= r) {
+            return;
+        }
         // 先划分区间
         int p = partition(arr, l, r, random);
         // 对左边递归排序

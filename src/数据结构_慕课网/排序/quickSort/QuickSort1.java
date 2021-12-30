@@ -14,7 +14,9 @@ public class QuickSort1 {
     }
 
     private static <E extends Comparable<E>> void quickSort2ways(E[] arr, int l, int r, Random random) {
-        if (l >= r) return;
+        if (l >= r) {
+            return;
+        }
         int p = partition(arr, l, r, random);
         quickSort2ways(arr, l, p - 1, random);
         quickSort2ways(arr, p + 1, r, random);
